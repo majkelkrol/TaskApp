@@ -8,6 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let tasks = [
+    "Play in CyberPunk 2077",
+    "Code new app in Xcode",
+    "Buy MacStudio",
+    "Read the first book in 2023",
+    "Wash yours Tesla S Plaid",
+    "Listen some metal music",
+    "Go for a run"
+    ]
+    
 
     @IBOutlet weak var tableView: UITableView!
     
