@@ -11,21 +11,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var taskList = [
-        Task(id: 1, title: "Play in CyberPunk 2077", status: true),
-        Task(id: 2, title: "Code new app in Xcode", status: true),
-        Task(id: 3, title: "Buy MacStudio", status: false),
-        Task(id: 4, title: "Read the first book in 2023", status: true),
-        Task(id: 5, title: "Wash yours Tesla S Plaid", status: false),
-        Task(id: 6, title: "Listen some metal music", status: true),
-        Task(id: 7, title: "Go for a run", status: true)
-    ]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: TableViewCell.cellId)
     }
 }
 
@@ -37,12 +28,15 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        taskList.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = taskList[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.cellId, for: indexPath)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return TableViewCell.height
     }
 }
