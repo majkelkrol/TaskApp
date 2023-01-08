@@ -14,8 +14,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        setupCell()
+    }
+    
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    func setupCell() {
         tableView.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: TableViewCell.cellId)
     }
 }

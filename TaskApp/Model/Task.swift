@@ -12,4 +12,3 @@ struct Task {
     var title: String
     var status: Bool
 }
-
