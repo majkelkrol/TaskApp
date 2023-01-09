@@ -14,20 +14,27 @@ class AddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        textFieldTask.delegate = self
+        textFieldTask.becomeFirstResponder()
     }
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        guard let text = textFieldTask.text else {
+        guard let text = textFieldTask.text, !text.isEmpty else {
             return
         }
-        if text.isEmpty {
-            return
-        }
+        print(text)
+        textFieldTask.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension AddViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFieldTask.resignFirstResponder()
+        return true
     }
 }
