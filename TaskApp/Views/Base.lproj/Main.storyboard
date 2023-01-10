@@ -41,6 +41,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TaskApp" id="nVK-X5-k1w">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="xEd-az-DXB">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="21F-dP-01C"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="BUk-Qb-V7Y">
                             <connections>
                                 <segue destination="OKx-Sq-auD" kind="presentation" id="khl-96-V08"/>

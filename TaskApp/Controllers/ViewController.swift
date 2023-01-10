@@ -28,6 +28,15 @@ class ViewController: UIViewController {
         setupCell()
     }
     
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        if tableView.isEditing {
+            tableView.isEditing = false
+        } else {
+            tableView.isEditing = true
+        }
+    }
+    
+    
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -71,5 +80,13 @@ extension ViewController: UITableViewDataSource {
         let task = taskList[indexPath.row]
         cell.taskLabel.text = task.title
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        taskList.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
 }
