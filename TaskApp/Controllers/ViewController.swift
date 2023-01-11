@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         setupCell()
     }
     
-    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func editButtonTapped(_ sender: Any) {
         if tableView.isEditing {
             tableView.isEditing = false
         } else {
@@ -36,6 +36,10 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func addButtonPressed(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "add") as! AddViewController
+        navigationController?.pushViewController(vc, animated: false)
+    }
     
     func setupTableView() {
         tableView.delegate = self

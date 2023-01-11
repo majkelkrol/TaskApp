@@ -18,23 +18,26 @@ class AddViewController: UIViewController {
         textFieldTask.becomeFirstResponder()
     }
     
-    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        saveTask()
+    }
+    
+    func saveTask() {
         guard let text = textFieldTask.text, !text.isEmpty else {
             return
         }
-        print(text)
         textFieldTask.endEditing(true)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 }
 
 extension AddViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textFieldTask.resignFirstResponder()
+        saveTask()
         return true
     }
 }

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="R50-va-qw7">
-                                <rect key="frame" x="0.0" y="91" width="428" height="801"/>
+                                <rect key="frame" x="0.0" y="143" width="428" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="FC0-6d-c3R">
@@ -43,12 +43,12 @@
                     <navigationItem key="navigationItem" title="TaskApp" id="nVK-X5-k1w">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="xEd-az-DXB">
                             <connections>
-                                <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="21F-dP-01C"/>
+                                <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="v1Q-Ac-Ylt"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="BUk-Qb-V7Y">
                             <connections>
-                                <segue destination="OKx-Sq-auD" kind="presentation" id="khl-96-V08"/>
+                                <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="9GF-qb-1MP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -63,40 +63,46 @@
         <!--Add View Controller-->
         <scene sceneID="hac-Rj-ifQ">
             <objects>
-                <viewController id="AsZ-k2-mlh" customClass="AddViewController" customModule="TaskApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="add" id="AsZ-k2-mlh" customClass="AddViewController" customModule="TaskApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wYO-bt-ggB">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new amazing task!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-Sv-Dr7">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new amazing task!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-Sv-Dr7">
                                 <rect key="frame" x="20" y="199" width="388" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wgt-H9-0RK"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="wxQ-Sv-Dr7" firstAttribute="trailing" secondItem="wYO-bt-ggB" secondAttribute="trailingMargin" id="Gxh-jE-tjK"/>
+                            <constraint firstItem="wxQ-Sv-Dr7" firstAttribute="top" secondItem="wgt-H9-0RK" secondAttribute="top" constant="108" id="ZiR-CV-fVt"/>
+                            <constraint firstItem="wxQ-Sv-Dr7" firstAttribute="leading" secondItem="wYO-bt-ggB" secondAttribute="leadingMargin" id="f9w-vd-j0X"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="ZEr-15-sp3">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="N2W-cY-yz1">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="OkY-dQ-h1n">
                             <connections>
-                                <action selector="cancelButtonPressed:" destination="AsZ-k2-mlh" id="0ei-Vf-cLK"/>
+                                <action selector="cancelButtonTapped:" destination="AsZ-k2-mlh" id="Nup-cu-p9F"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="MH5-DD-mSI">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="KuD-pg-6FR">
                             <connections>
-                                <action selector="doneButtonPressed:" destination="AsZ-k2-mlh" id="Xjc-wB-yd8"/>
+                                <action selector="doneButtonTapped:" destination="AsZ-k2-mlh" id="R3v-kk-ar9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="textFieldTask" destination="wxQ-Sv-Dr7" id="I2l-tY-Cd9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ve9-eI-bea" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2743" y="4"/>
+            <point key="canvasLocation" x="2765.8878504672894" y="3.8876889848812097"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Soi-W8-Hfo">
@@ -117,22 +123,22 @@
             <point key="canvasLocation" x="137.38317757009344" y="3.8876889848812097"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Ukj-IC-QxY">
+        <scene sceneID="fof-lF-rDl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OKx-Sq-auD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a6y-B1-VZm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iuY-AN-1b4">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="56"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ACe-9k-NvG">
+                        <rect key="frame" x="0.0" y="47" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="AsZ-k2-mlh" kind="relationship" relationship="rootViewController" id="xX2-Cx-FOI"/>
+                        <segue destination="AsZ-k2-mlh" kind="relationship" relationship="rootViewController" id="X1W-x5-1Nv"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zBe-bA-Q9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XgT-0e-HHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1936" y="4"/>
+            <point key="canvasLocation" x="1865.8878504672896" y="3.8876889848812097"/>
         </scene>
     </scenes>
     <resources>
