@@ -12,6 +12,8 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var taskImage: UIImageView!
     @IBOutlet weak var taskLabel: UILabel!
     
+    
+    var status = false
     static let cellId = "cell"
     static let height: CGFloat = 65
     

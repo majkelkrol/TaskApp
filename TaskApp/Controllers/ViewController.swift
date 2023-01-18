@@ -53,7 +53,15 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
+        
+        if cell.status {
+            cell.taskImage.image = UIImage(systemName: "bookmark.circle.fill")
+            cell.status.toggle()
+        } else {
+            cell.taskImage.image = UIImage(systemName: "bookmark.circle")
+            cell.status.toggle()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
