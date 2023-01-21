@@ -30,6 +30,8 @@ class AddViewController: UIViewController {
         guard let text = textFieldTask.text, !text.isEmpty else {
             return
         }
+        
+        taskList.append(text)
         textFieldTask.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
