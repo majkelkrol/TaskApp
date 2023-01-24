@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var taskList = ["Play in CyberPunk 2077", "Code new app in Xcode", "Buy MacStudio", "Read the first book in 2023", "Wash yours Tesla S Plaid", "Listen some metal music", "Go for a run"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,9 @@ class ViewController: UIViewController {
     
     @IBAction func addButtonPressed(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "add") as! AddViewController
+        vc.completion = { text in
+            self.taskList.append(text)
+        }
         navigationController?.pushViewController(vc, animated: false)
     }
     
@@ -96,5 +101,3 @@ extension ViewController: UITableViewDataSource {
         taskList.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
 }
-
-var taskList = ["Play in CyberPunk 2077", "Code new app in Xcode", "Buy MacStudio", "Read the first book in 2023", "Wash yours Tesla S Plaid", "Listen some metal music", "Go for a run"]

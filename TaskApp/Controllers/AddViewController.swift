@@ -11,6 +11,8 @@ class AddViewController: UIViewController {
 
     @IBOutlet weak var textFieldTask: UITextField!
     
+    var completion: ((String) -> Void)?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +32,9 @@ class AddViewController: UIViewController {
         guard let text = textFieldTask.text, !text.isEmpty else {
             return
         }
-        
-        taskList.append(text)
         textFieldTask.endEditing(true)
         navigationController?.popViewController(animated: true)
+        completion?(text)
     }
 }
 
