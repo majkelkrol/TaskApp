@@ -68,6 +68,8 @@ extension ViewController: UITableViewDelegate {
             cell.taskImage.image = UIImage(systemName: "bookmark.circle")
             cell.status.toggle()
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
