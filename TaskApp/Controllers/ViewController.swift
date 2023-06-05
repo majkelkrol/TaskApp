@@ -13,11 +13,17 @@ class ViewController: UIViewController {
     
     var taskList = ["Play in CyberPunk 2077", "Code new app in Xcode", "Buy MacStudio", "Read the first book in 2023", "Wash yours Tesla S Plaid", "Listen some metal music", "Go for a run"]
     
+    let defaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupCell()
+        
+        if let task = defaults.array(forKey: "TaskList") as? [String] {
+            taskList = task
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +42,7 @@ class ViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(identifier: "add") as! AddViewController
         vc.completion = { text in
             self.taskList.append(text)
+            self.defaults.set(self.taskList, forKey: "TaskList")
         }
         navigationController?.pushViewController(vc, animated: false)
     }
