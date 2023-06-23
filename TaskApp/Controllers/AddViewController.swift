@@ -7,11 +7,15 @@
 
 import UIKit
 
+protocol AddViewControllerDelegate {
+    func fetchNewTask(text: String)
+}
+
 class AddViewController: UIViewController {
 
     @IBOutlet weak var textFieldTask: UITextField!
     
-    var completion: ((String) -> Void)?
+    var delegate: AddViewControllerDelegate?
     
     
     override func viewDidLoad() {
@@ -34,7 +38,7 @@ class AddViewController: UIViewController {
         }
         textFieldTask.endEditing(true)
         navigationController?.popViewController(animated: true)
-        completion?(text)
+        delegate?.fetchNewTask(text: text)
     }
 }
 

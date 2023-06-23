@@ -40,10 +40,8 @@ class ViewController: UIViewController {
     
     @IBAction func addButtonPressed(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "add") as! AddViewController
-        vc.completion = { text in
-            self.taskList.append(text)
-            self.defaults.set(self.taskList, forKey: "TaskList")
-        }
+        vc.delegate = self
+
         navigationController?.pushViewController(vc, animated: false)
     }
     
@@ -108,5 +106,12 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         taskList.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+    }
+}
+
+extension ViewController: AddViewControllerDelegate {
+    func fetchNewTask(text: String) {
+        self.taskList.append(text)
+        self.defaults.set(self.taskList, forKey: "TaskList")
     }
 }
